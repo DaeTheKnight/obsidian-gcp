@@ -97,14 +97,14 @@ Visit this URL within your instance (**Use the user 'ubuntu'**):
 http://localhost:5984/_utils
 ```
 Log in using the credentials you specified in the Docker Compose file (username: `admin`, password: pass).
-![[Screenshot-1.png]]
+![Screenshot-1.png](Screenshot-1.png)
 
 ### Creating the Database
 
 In the CouchDB admin interface:
 
 1. Click “Create Database” in the sidebar
-![[Screenshot-2.png]]
+![Screenshot-2.png](Screenshot-2.png)
 2. Name your database `obsidian` (or any name you prefer)
 3. Leave “Partitioned” unchecked
 4. Click “Create”
@@ -116,7 +116,7 @@ Now we need to give our new user access to the obsidian database:
 1. Navigate to your `obsidian` database
 2. Click on “Permissions” in the sidebar
 3. Under “Members”, add `admin`, `obsidian_user` or what you set as your username to both “Names” fields (for read and write access)
-![[Screenshot-3.png]]
+![Screenshot-3.png](Screenshot-3.png)
 4. Click “Save”
 
 **Your CouchDB instance is now ready for Obsidian LiveSync!**
