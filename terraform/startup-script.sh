@@ -160,15 +160,18 @@ PROJECT_DIR="$TARGET_HOME/obsidian-sync"
 mkdir -p "$PROJECT_DIR"
 cd "$PROJECT_DIR"
 
-cat > docker-compose.yml << 'EOF'
+COUCH_USER=$(gcloud secrets versions access latest --secret="obsidian-user")
+COUCH_PASS=$(gcloud secrets versions access latest --secret="obsidian-password")
+
+cat > docker-compose.yml << EOF
 services:
   couchdb:
     image: couchdb:latest
     container_name: couchdb-for-ols
     user: "5984:5984"
     environment:
-      - COUCHDB_USER=admin        # TODO: change this username
-      - COUCHDB_PASSWORD=pass   # TODO: change this password
+      - COUCHDB_USER=${COUCH_USER}        
+      - COUCHDB_PASSWORD=${COUCH_PASS}    
     volumes:
       - ./couchdb-data:/opt/couchdb/data
       - ./couchdb-etc:/opt/couchdb/etc/local.d

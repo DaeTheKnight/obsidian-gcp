@@ -4,7 +4,7 @@
 
 resource "google_compute_instance" "notes-vm" {
   depends_on   = [google_compute_network.vpc]
-  name         = "notes-vm-1"
+  name         = "notes-vm-2"
   machine_type = "e2-medium"
   zone         = var.zone
 
@@ -17,11 +17,16 @@ resource "google_compute_instance" "notes-vm" {
     }
   }
 
+    service_account {
+    email  = google_service_account.vm_sa.email
+    scopes = ["cloud-platform"] # This allows the VM to call Google APIs
+  }
+
   metadata_startup_script = file("startup-script.sh")
 
   network_interface {
     network    = var.vpc
-    subnetwork = google_compute_subnetwork.obsidian-net.id
+    subnetwork = var.subnet
     access_config {
     }
   }

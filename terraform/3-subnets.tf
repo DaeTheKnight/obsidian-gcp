@@ -1,4 +1,4 @@
-resource "google_compute_subnetwork" "obsidian-net" {
+resource "google_compute_subnetwork" "obsidian-net-2" {
   name                     = var.subnet
   ip_cidr_range            = var.range
   region                   = var.region

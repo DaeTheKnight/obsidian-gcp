@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    bucket      = "state-obsidian-1"
-    prefix      = "terraform/state-1"
+    bucket      = "state-ubuntu-2"
+    prefix      = "terraform/state-2"
     #credentials = "key.json"
   }
   required_providers {
